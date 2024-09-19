@@ -15,7 +15,7 @@
                                     <a href="{{ route('allProducts') }}">Explore Products</a>
                                 </div>
                             </div>
-                            <img src="{{ asset('assets/images/left-banner-image.jpg' }}" alt="">
+                            <img src="{{ asset('assets/images/left-banner-image.jpg') }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="{{ asset('assets/images/baner-right-image-01.jpg' }}">
+                                        <img src="{{ asset('assets/images/baner-right-image-01.jpg') }}">
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="{{ asset('assets/images/baner-right-image-02.jpg' }}">
+                                        <img src="{{ asset('assets/images/baner-right-image-02.jpg') }}">
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="{{ asset('assets/images/baner-right-image-03.jpg' }}">
+                                        <img src="{{ asset('assets/images/baner-right-image-03.jpg') }}">
                                     </div>
                                 </div>
                             </div>
