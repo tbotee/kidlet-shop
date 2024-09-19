@@ -27,17 +27,6 @@
 
 <body>
 
-<!-- ***** Preloader Start ***** -->
-{{--<div id="preloader">--}}
-{{--    <div class="jumper">--}}
-{{--        <div></div>--}}
-{{--        <div></div>--}}
-{{--        <div></div>--}}
-{{--    </div>--}}
-{{--</div>--}}
-<!-- ***** Preloader End ***** -->
-
-
 <!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky">
     <div class="container">
@@ -50,33 +39,7 @@
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li class="scroll-to-section">
-                            <a href="{{ route('home') }}" class="{{ Route::is('home') ? 'active' : '' }}">
-                                Home
-                            </a>
-                        </li>
-                        <li class="scroll-to-section">
-                            <a href="{{ route('category', ['categoryId' => 'womens']) }}"
-                               class="{{ Route::is('category') && Request::segment(1) === 'womens' ? 'active' : '' }}"
-                            >Women's</a>
-                        </li>
-                        <li class="scroll-to-section">
-                            <a href="{{ route('category', ['categoryId' => 'mens']) }}"
-                               class="{{ Route::is('category') && Request::segment(1) === 'mens' ? 'active' : '' }}"
-                            >Men's</a>
-                        </li>
-                        <li class="scroll-to-section">
-                            <a href="{{ route('category', ['categoryId' => 'kids']) }}"
-                               class="{{ Route::is('category') && Request::segment(1) === 'kids' ? 'active' : '' }}"
-                            >Kid's</a>
-                        </li>
-                        <li class="scroll-to-section">
-                            <a href="{{ route('allProducts') }}" class="{{ Route::is('allProducts') ? 'active' : '' }}">
-                                Explore All
-                            </a>
-                        </li>
-                    </ul>
+                    <x-main-navigation/>
                     <a class='menu-trigger'>
                         <span>Menu</span>
                     </a>
