@@ -15,17 +15,29 @@ class ProductFactory extends Factory
 
     public function definition(): array
     {
-        $randomEmail = $this->faker->unique()->safeEmail;
-        $gravatarUrl = 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($randomEmail))) . '?d=monsterid&s=350';
+        $category = Category::inRandomOrder()->first();
 
         return [
-            'category_id' => Category::inRandomOrder()->first()->id,
+            'category_id' => $category->id,
             'name' => $this->faker->words(3, true),
             'price' => $this->faker->randomFloat(2, 5, 50),
             'stock' => 1,
-            'image_path' => $gravatarUrl,
+            'image_path' => $this->getImagePath($category->slug),
             'created_at' => now(),
             'updated_at' => now(),
         ];
+    }
+
+    private function getImagePath($slug)
+    {
+        return match ($slug) {
+            config('constants.category_slug.womens') =>
+                $this->faker->randomElement(['kid-01.jpg', 'women-01.jpg', 'women-01.jpg']),
+            config('constants.category_slug.mens') =>
+                $this->faker->randomElement(['men-01.jpg', 'men-01.jpg', 'men-01.jpg']),
+            config('constants.category_slug.kids') =>
+                $this->faker->randomElement(['kid-01.jpg', 'kid-01.jpg', 'kid-01.jpg']),
+            default => '',
+        };
     }
 }
