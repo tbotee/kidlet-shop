@@ -14,34 +14,27 @@
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.css') }}">
 
-    <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/templatemo-hexashop.css') }}">
 
-    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl-carousel.css') }}">
 
-    <link rel="stylesheet" href="assets/css/lightbox.css">
-    <!--
-
-    TemplateMo 571 Hexashop
-
-    https://templatemo.com/tm-571-hexashop
-
-    -->
+    <link rel="stylesheet" href="{{ asset('assets/css/lightbox.css') }}">
 </head>
 
 <body>
 
 <!-- ***** Preloader Start ***** -->
-<div id="preloader">
-    <div class="jumper">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-</div>
+{{--<div id="preloader">--}}
+{{--    <div class="jumper">--}}
+{{--        <div></div>--}}
+{{--        <div></div>--}}
+{{--        <div></div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 <!-- ***** Preloader End ***** -->
 
 
@@ -52,8 +45,8 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <img src="assets/images/kidlet-desktop-logo-small.png">
+                    <a href="{{ route('home') }}" class="logo">
+                        <img src="{{ asset('assets/images/kidlet-desktop-logo-small.png') }}">
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
@@ -64,13 +57,13 @@
                             </a>
                         </li>
                         <li class="scroll-to-section">
-                            <a href="{{ route('category', ['categoryId' => 'mens']) }}"
-                               class="{{ Route::is('category') && Request::segment(1) === 'mens' ? 'active' : '' }}"
-                            >Men's</a>
-                        </li>
-                        <li class="scroll-to-section">
                             <a href="{{ route('category', ['categoryId' => 'womens']) }}"
                                class="{{ Route::is('category') && Request::segment(1) === 'womens' ? 'active' : '' }}"
+                            >Women's</a>
+                        </li>
+                        <li class="scroll-to-section">
+                            <a href="{{ route('category', ['categoryId' => 'mens']) }}"
+                               class="{{ Route::is('category') && Request::segment(1) === 'mens' ? 'active' : '' }}"
                             >Men's</a>
                         </li>
                         <li class="scroll-to-section">
@@ -95,6 +88,8 @@
 </header>
 <!-- ***** Header Area End ***** -->
 
+@yield('banner')
+
 @yield('content')
 
 <!-- ***** Footer Start ***** -->
@@ -104,7 +99,7 @@
             <div class="col-lg-3">
                 <div class="first-item">
                     <div class="logo">
-                        <img src="assets/images/kidlet-desktop-logo-small.png" alt="kidlet ecommerce templatemo">
+                        <img src="{{ asset('assets/images/kidlet-desktop-logo-small.png') }}" alt="kidlet ecommerce templatemo">
                     </div>
                     <ul>
                         <li><a href="#">Romania, Keresztur</a></li>
@@ -119,6 +114,7 @@
                     <li><a href="{{ route('category', ['categoryId' => 'mens']) }}">Men’s Shopping</a></li>
                     <li><a href="{{ route('category', ['categoryId' => 'womens']) }}">Women’s Shopping</a></li>
                     <li><a href="{{ route('category', ['categoryId' => 'kids']) }}">Kid's Shopping</a></li>
+                    <li><a href="{{ route('category', ['categoryId' => 'accessories']) }}">Accessories</a></li>
                 </ul>
             </div>
             <div class="col-lg-12">
@@ -141,26 +137,26 @@
 
 
 <!-- jQuery -->
-<script src="assets/js/jquery-2.1.0.min.js"></script>
+<script src="{{ asset('assets/js/jquery-2.1.0.min.js') }}"></script>
 
 <!-- Bootstrap -->
-<script src="assets/js/popper.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="{{ asset('assets/js/popper.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 
 <!-- Plugins -->
-<script src="assets/js/owl-carousel.js"></script>
-<script src="assets/js/accordions.js"></script>
-<script src="assets/js/datepicker.js"></script>
-<script src="assets/js/scrollreveal.min.js"></script>
-<script src="assets/js/waypoints.min.js"></script>
-<script src="assets/js/jquery.counterup.min.js"></script>
-<script src="assets/js/imgfix.min.js"></script>
-<script src="assets/js/slick.js"></script>
-<script src="assets/js/lightbox.js"></script>
-<script src="assets/js/isotope.js"></script>
+<script src="{{ asset('assets/js/owl-carousel.js') }}"></script>
+<script src="{{ asset('assets/js/accordions.js') }}"></script>
+<script src="{{ asset('assets/js/datepicker.js') }}"></script>
+<script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
+<script src="{{ asset('assets/js/waypoints.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
+<script src="{{ asset('assets/js/imgfix.min.js') }}"></script>
+<script src="{{ asset('assets/js/slick.js') }}"></script>
+<script src="{{ asset('assets/js/lightbox.js') }}"></script>
+<script src="{{ asset('assets/js/isotope.js') }}"></script>
 
 <!-- Global Init -->
-<script src="assets/js/custom.js"></script>
+<script src="{{ asset('assets/js/custom.js') }}"></script>
 
 <script>
 
