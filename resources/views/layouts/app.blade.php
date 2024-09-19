@@ -74,10 +74,10 @@
             <div class="col-lg-3">
                 <h4>Shopping &amp; Categories</h4>
                 <ul>
-                    <li><a href="{{ route('category', ['categoryId' => 'mens']) }}">Men’s Shopping</a></li>
-                    <li><a href="{{ route('category', ['categoryId' => 'womens']) }}">Women’s Shopping</a></li>
-                    <li><a href="{{ route('category', ['categoryId' => 'kids']) }}">Kid's Shopping</a></li>
-                    <li><a href="{{ route('category', ['categoryId' => 'accessories']) }}">Accessories</a></li>
+                    <li><a href="{{ route('category', ['categorySlug' => 'mens']) }}">Men’s Shopping</a></li>
+                    <li><a href="{{ route('category', ['categorySlug' => 'womens']) }}">Women’s Shopping</a></li>
+                    <li><a href="{{ route('category', ['categorySlug' => 'kids']) }}">Kid's Shopping</a></li>
+                    <li><a href="{{ route('category', ['categorySlug' => 'accessories']) }}">Accessories</a></li>
                 </ul>
             </div>
             <div class="col-lg-12">

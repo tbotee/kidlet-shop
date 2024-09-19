@@ -9,6 +9,6 @@ Route::get('', [HomeController::class, 'index'])->name('home');
 
 Route::get('/all-products', [ProductsController::class, 'allProducts'])->name('allProducts');
 
-Route::get('/{categoryId}', [ProductsController::class, 'category'])->name('category');
+Route::get('/{categorySlug}', [ProductsController::class, 'category'])->name('category');
 
-Route::get('/{categoryId}/{productId}', [ProductController::class, 'index'])->name('product');
+Route::get('/{categorySlug}/{productId}', [ProductController::class, 'index'])->name('product');

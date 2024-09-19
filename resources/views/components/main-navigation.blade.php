@@ -7,7 +7,7 @@
     @foreach($categories as $category)
         @if($category->in_menu)
             <li class="scroll-to-section">
-                <a href="{{ route('category', ['categoryId' => $category->slug]) }}"
+                <a href="{{ route('category', ['categorySlug' => $category->slug]) }}"
                    class="{{ Route::is('category') && Request::segment(1) === $category->slug ? 'active' : '' }}"
                 >{{ $category->name  }}</a>
             </li>

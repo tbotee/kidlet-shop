@@ -32,11 +32,11 @@ class ProductFactory extends Factory
     {
         return match ($slug) {
             config('constants.category_slug.womens') =>
-                $this->faker->randomElement(['kid-01.jpg', 'women-01.jpg', 'women-01.jpg']),
+                $this->faker->randomElement(['women-01.jpg', 'women-02.jpg', 'women-03.jpg']),
             config('constants.category_slug.mens') =>
-                $this->faker->randomElement(['men-01.jpg', 'men-01.jpg', 'men-01.jpg']),
+                $this->faker->randomElement(['men-01.jpg', 'men-02.jpg', 'men-03.jpg']),
             config('constants.category_slug.kids') =>
-                $this->faker->randomElement(['kid-01.jpg', 'kid-01.jpg', 'kid-01.jpg']),
+                $this->faker->randomElement(['kid-01.jpg', 'kid-02.jpg', 'kid-03.jpg']),
             default => '',
         };
     }

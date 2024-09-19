@@ -11,7 +11,7 @@
                         <h4>{{ $category->name }}</h4>
                         <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
                         <div class="main-border-button">
-                            <a href="{{ route('category', ['categoryId' => $category->slug]) }}">Discover More</a>
+                            <a href="{{ route('category', ['categorySlug' => $category->slug]) }}">Discover More</a>
                         </div>
                     </div>
                 </div>
