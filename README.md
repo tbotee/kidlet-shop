@@ -20,5 +20,6 @@
   - seeder will ask a questions, answer Yes
 
 ### Starting the application
-- ```php artisan serve```
+- In on terminal run: ```php artisan serve```
   - then visit: http://127.0.0.1:8000
+- In another terminal run: ```npm run dev```
