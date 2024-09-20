@@ -37,7 +37,7 @@ class LatestProductList extends Component
     public function render(): View|Closure|string
     {
         $categoryIdsBySlug = $this->categoryService->getCategoryIdsBySlugs();
-        $this->products =  $this->productService->getProductsByCategory($categoryIdsBySlug[$this->slug]);
+        $this->products =  $this->productService->getProducts($categoryIdsBySlug[$this->slug]);
 
         return view('components.latest-product-list');
     }

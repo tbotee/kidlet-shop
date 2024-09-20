@@ -1,3 +1,5 @@
+## Minimum requirement
+- Laravel 11.x requires a minimum PHP version of 8.2
 
 ## Installation
 
@@ -12,9 +14,10 @@
 - ```php artisan key:generate```
 
 ### Prepare database
-- create tables in the database ```php artisan migrate```
+- create tables in the database: ```php artisan migrate```
   - migration will ask two questions, answer Yes to both
 - run seeders: ```php artisan db:seed```
+  - seeder will ask a questions, answer Yes
 
 ### Starting the application
 - ```php artisan serve```

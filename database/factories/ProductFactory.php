@@ -19,7 +19,7 @@ class ProductFactory extends Factory
 
         return [
             'category_id' => $category->id,
-            'name' => $this->faker->words(3, true),
+            'name' => $this->faker->words(2, true),
             'price' => $this->faker->randomFloat(2, 5, 50),
             'stock' => 1,
             'image_path' => $this->getImagePath($category->slug),
@@ -37,6 +37,8 @@ class ProductFactory extends Factory
                 $this->faker->randomElement(['men-01.jpg', 'men-02.jpg', 'men-03.jpg']),
             config('constants.category_slug.kids') =>
                 $this->faker->randomElement(['kid-01.jpg', 'kid-02.jpg', 'kid-03.jpg']),
+            config('constants.category_slug.accessories') => 'accessories.jpg',
+            config('constants.category_slug.onSale') => 'on-sale.jpg',
             default => '',
         };
     }

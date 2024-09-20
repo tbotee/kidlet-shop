@@ -15,7 +15,7 @@ class CategoryService
             config('constants.category_slug.kids')
         ];
 
-        $categories = Category::whereIn('slug', $slugs)
+        $categories = Category::all()
             ->pluck('id', 'slug');
         return $categories->toArray();
     }
