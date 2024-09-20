@@ -57,6 +57,19 @@
     <button onclick="closeAlert()">&times;</button> <!-- Close button -->
 </div>
 
+<div id="cart-panel" class="cart-panel">
+    <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button class="close-cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+
+    </div>
+    <div class="cart-footer main-border-button">
+        <a href="#" class="checkout-btn">Go to Checkout</a>
+    </div>
+</div>
+
 @yield('banner')
 
 @yield('content')

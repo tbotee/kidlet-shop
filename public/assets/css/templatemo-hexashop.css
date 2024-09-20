@@ -2266,13 +2266,76 @@ contact Us Page
     border-radius: 50%;
     width: 30px;
     height: 30px;
-    display: block;
-    position: absolute;
+    display: inline-block;
     line-height: 28px;
     text-align: center;
     font-weight: bold;
     top: -4px;
     right: -22px;
+}
+
+.cart-panel {
+    position: fixed;
+    top: 0;
+    right: -400px; /* Hidden off the right side of the screen */
+    width: 400px;
+    height: 100%;
+    background-color: #f7f7f7;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+/* When cart is open, slide it in */
+.cart-panel.open {
+    right: 0;
+}
+
+/* Cart header and close button */
+.cart-header {
+    padding: 15px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.cart-items {
+    padding: 15px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+}
+
+.cart-footer {
+    padding: 15px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+
+.checkout-btn {
+    text-decoration: none;
 }
 
 @keyframes flicker {

@@ -207,6 +207,38 @@ function closeAlert() {
                     triggerAlert(error.message);
                 });
         });
+
+        const cartPanel = document.getElementById('cart-panel');
+        const cartLink = document.querySelector('.shopping-cart-in-menu');
+
+        const closeCartBtn = document.querySelector('.close-cart');
+
+        cartLink.addEventListener('click', function(event) {
+
+            fetch('/cart')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.querySelector('#cart-items').innerHTML = html;
+                    //document.querySelector('#cart-panel').classList.add('open');
+                    cartPanel.classList.add('open');
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+
+            event.preventDefault();
+
+        });
+
+        closeCartBtn.addEventListener('click', function() {
+            cartPanel.classList.remove('open');
+        });
+
     });
 
 

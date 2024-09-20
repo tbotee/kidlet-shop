@@ -6,8 +6,8 @@ use App\Models\ShoppingCart;
 use App\Services\ProductService;
 use App\Services\UserService;
 use Exception;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ShoppingCartController extends Controller
 {
@@ -47,6 +47,17 @@ class ShoppingCartController extends Controller
                 'message' => $e->getMessage()
             ], 400);
         }
+    }
+
+    public function cart(Request $request): View
+    {
+        $user = $this->userService->getAuthenticatedUser();
+        return view('components.cart', [
+            'items' => $user->shoppingCart?->items ?? collect([]),
+            'total' => $user->shoppingCart?->items->sum(function ($item) {
+                return $item->product->price;
+            })
+        ]);
     }
 
     private function getId(Request $request): mixed

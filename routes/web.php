@@ -21,10 +21,14 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/cart', [ShoppingCartController::class, 'cart'])->name('getCart');
+
+Route::post('/cart', [ShoppingCartController::class, 'store'])->name('setCart');
+
 Route::get('/all-products', [ProductsController::class, 'allProducts'])->name('allProducts');
 
 Route::get('/{categorySlug}', [ProductsController::class, 'category'])->name('category');
 
 Route::get('/{categorySlug}/{productSlug}', [ProductController::class, 'index'])->name('product');
 
-Route::post('/cart', [ShoppingCartController::class, 'store']);
+
