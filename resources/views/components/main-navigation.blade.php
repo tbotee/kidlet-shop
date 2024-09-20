@@ -42,4 +42,8 @@
             </a>
         </li>
     @endif
+    <li class="scroll-to-section">
+        <a href=""><i class="fa fa-shopping-cart fa-lg"></i></a>
+    </li>
+
 </ul>

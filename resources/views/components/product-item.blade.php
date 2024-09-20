@@ -3,7 +3,11 @@
         <div class="hover-content">
             <ul>
                 <li><a href="{{ route('product', ['categorySlug' => $product->category->slug, 'productSlug' => $product->slug]) }}"><i class="fa fa-eye"></i></a></li>
-                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                <li><a class="add-to-cart"
+                       data-id="{{ $product->id }}">
+                        <i class="fa fa-shopping-cart"></i>
+                    </a>
+                </li>
             </ul>
         </div>
         <img src="{{ asset('assets/images/' . $product->image_path) }}" alt="">

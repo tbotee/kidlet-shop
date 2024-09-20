@@ -27,7 +27,7 @@
                         </div>
                         <div class="total mt-3">
                             <h4>Total: ${{ $product->price }}</h4>
-                            <div class="main-border-button"><a href="#">Add To Cart</a></div>
+                            <div class="main-border-button"><a href="#"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</a></div>
                         </div>
                     </div>
                 </div>

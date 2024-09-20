@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -25,3 +26,5 @@ Route::get('/all-products', [ProductsController::class, 'allProducts'])->name('a
 Route::get('/{categorySlug}', [ProductsController::class, 'category'])->name('category');
 
 Route::get('/{categorySlug}/{productSlug}', [ProductController::class, 'index'])->name('product');
+
+Route::post('/cart', [ShoppingCartController::class, 'store']);
