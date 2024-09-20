@@ -21,6 +21,11 @@ class ProductService
         return $builder->paginate($limit);
     }
 
+    public function getProductById(int $id): Product
+    {
+        return Product::with('category')->findOrFail($id);
+    }
+
     private function getProductsBuilder(int $categoryId = null): Builder
     {
         return Product::when($categoryId, function($query) use ($categoryId) {

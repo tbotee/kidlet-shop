@@ -24,7 +24,7 @@ class ProductsController extends Controller
     {
         return view('pages.product.products', [
             'products' => $this->productService->getProductsWithPagination($this->categoryIdsBySlug[$categorySlug], 9),
-            'categoryName' => Category::find($this->categoryIdsBySlug[$categorySlug])->name
+            'categoryName' => 'Check Our ' . Category::find($this->categoryIdsBySlug[$categorySlug])->name . ' Collection'
         ]);
     }
 
@@ -32,7 +32,7 @@ class ProductsController extends Controller
     {
         return view('pages.product.products', [
             'products' => $this->productService->getProductsWithPagination(limit: 9),
-            'categoryName' => 'All Our'
+            'categoryName' => 'All Our Collection'
         ]);
     }
 }

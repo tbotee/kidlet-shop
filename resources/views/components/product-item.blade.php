@@ -2,7 +2,7 @@
     <div class="thumb">
         <div class="hover-content">
             <ul>
-                <li><a href="{{ route('product', ['categorySlug' => $product->category->slug, 'productId' => $product->slug]) }}"><i class="fa fa-eye"></i></a></li>
+                <li><a href="{{ route('product', ['categorySlug' => $product->category->slug, 'productSlug' => $product->slug]) }}"><i class="fa fa-eye"></i></a></li>
                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
             </ul>
         </div>

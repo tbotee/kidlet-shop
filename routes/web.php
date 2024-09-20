@@ -24,4 +24,4 @@ Route::get('/all-products', [ProductsController::class, 'allProducts'])->name('a
 
 Route::get('/{categorySlug}', [ProductsController::class, 'category'])->name('category');
 
-Route::get('/{categorySlug}/{productId}', [ProductController::class, 'index'])->name('product');
+Route::get('/{categorySlug}/{productSlug}', [ProductController::class, 'index'])->name('product');

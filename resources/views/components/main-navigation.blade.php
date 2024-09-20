@@ -15,7 +15,7 @@
     @endforeach
     <li class="scroll-to-section">
         <a href="{{ route('allProducts') }}" class="{{ Route::is('allProducts') ? 'active' : '' }}">
-            Explore All
+            Explore
         </a>
     </li>
     @if(auth()->check())
