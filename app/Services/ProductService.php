@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Guest;
 use App\Models\Product;
+use App\Models\ShoppingCart;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
@@ -42,16 +43,10 @@ class ProductService
             ->with('category');
     }
 
-    public function addProductToCart(Guest|Authenticatable $user, Product $product)
+    public function addProductToCart(Product $product, ShoppingCart $cart)
     {
-        $cart = $user->shoppingCart()->firstOrCreate([]);
-        $cartItem = $cart->items()->where('product_id', $product->id)->first();
-        if (!$cartItem) {
-            return $cart->items()->create([
-                'product_id' => $product->id
-            ]);
-        } else {
-            throw new Exception('product-reserved-by-current-user');
-        }
+        return $cart->items()->create([
+            'product_id' => $product->id
+        ]);
     }
 }

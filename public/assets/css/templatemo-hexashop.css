@@ -23,16 +23,16 @@ Table of contents
 12. portfolio
 
 --------------------------------------------- */
-/* 
+/*
 ---------------------------------------------
 font & reset css
---------------------------------------------- 
+---------------------------------------------
 */
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
-/* 
+/*
 ---------------------------------------------
 reset
---------------------------------------------- 
+---------------------------------------------
 */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
@@ -108,10 +108,10 @@ p {
   color: #2a2a2a;
 }
 
-/* 
+/*
 ---------------------------------------------
 global styles
---------------------------------------------- 
+---------------------------------------------
 */
 html,
 body {
@@ -201,10 +201,10 @@ body {
 
 
 
-/* 
+/*
 ---------------------------------------------
 header
---------------------------------------------- 
+---------------------------------------------
 */
 
 .background-header {
@@ -644,10 +644,10 @@ header
 }
 
 
-/* 
+/*
 ---------------------------------------------
 banner
---------------------------------------------- 
+---------------------------------------------
 */
 
 .main-banner {
@@ -857,7 +857,7 @@ Men
 #men .owl-dots {
   display: none;
 }
-    
+
 #men .owl-nav .owl-prev{
   position: absolute;
   left: -80px;
@@ -1018,7 +1018,7 @@ Women
 #women .owl-dots {
   display: none;
 }
-    
+
 #women .owl-nav .owl-prev{
   position: absolute;
   left: -80px;
@@ -1178,7 +1178,7 @@ Kids
 #kids .owl-dots {
   display: none;
 }
-    
+
 #kids .owl-nav .owl-prev{
   position: absolute;
   left: -80px;
@@ -1347,10 +1347,10 @@ Explore
   font-weight: 500;
 }
 
-/* 
+/*
 ---------------------------------------------
 Social
---------------------------------------------- 
+---------------------------------------------
 */
 
 #social {
@@ -1414,10 +1414,10 @@ Social
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Subscribe
---------------------------------------------- 
+---------------------------------------------
 */
 
 .subscribe {
@@ -1493,10 +1493,10 @@ Subscribe
 }
 
 
-/* 
+/*
 ---------------------------------------------
 footer
---------------------------------------------- 
+---------------------------------------------
 */
 
 footer {
@@ -1567,10 +1567,10 @@ footer .under-footer a:hover {
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Products Page
---------------------------------------------- 
+---------------------------------------------
 */
 
 .page-heading {
@@ -1719,10 +1719,10 @@ Products Page
 
 
 
-/* 
+/*
 ---------------------------------------------
 Single Product Page
---------------------------------------------- 
+---------------------------------------------
 */
 
 #product {
@@ -1853,7 +1853,7 @@ Single Product Page
 
 .quantity {
   display: inline-block; }
- 
+
  .quantity .input-text.qty {
   width: 35px;
   height: 39px;
@@ -1862,20 +1862,20 @@ Single Product Page
   background-color: transparent;
   border: 1px solid #efefef;
  }
- 
+
  .quantity.buttons_added {
   text-align: left;
   position: relative;
   white-space: nowrap;
   vertical-align: top; }
- 
+
  .quantity.buttons_added input {
   display: inline-block;
   margin: 0;
   vertical-align: top;
   box-shadow: none;
  }
- 
+
  .quantity.buttons_added .minus,
  .quantity.buttons_added .plus {
   padding: 7px 10px 8px;
@@ -1883,33 +1883,33 @@ Single Product Page
   background-color: #ffffff;
   border: 1px solid #efefef;
   cursor:pointer;}
- 
+
  .quantity.buttons_added .minus {
   border-right: 0; }
- 
+
  .quantity.buttons_added .plus {
   border-left: 0; }
- 
+
  .quantity.buttons_added .minus:hover,
  .quantity.buttons_added .plus:hover {
   background: #eeeeee; }
- 
+
  .quantity input::-webkit-outer-spin-button,
  .quantity input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   margin: 0; }
-  
+
   .quantity.buttons_added .minus:focus,
  .quantity.buttons_added .plus:focus {
   outline: none; }
 
 
 
-/* 
+/*
 ---------------------------------------------
 About Us Page
---------------------------------------------- 
+---------------------------------------------
 */
 
 .about-page-heading {
@@ -2133,10 +2133,10 @@ About Us Page
 
 
 
-/* 
+/*
 ---------------------------------------------
 contact Us Page
---------------------------------------------- 
+---------------------------------------------
 */
 
 .contact-us {
@@ -2214,11 +2214,93 @@ contact Us Page
   color: #2a2a2a;
 }
 
+.alert-box {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #f44336; /* Red background for error */
+    color: white;
+    padding: 15px 25px 15px 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    opacity: 0;  /* Initially hidden */
+    transform: translateX(100%); /* Initially off-screen */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 1000;
+}
 
-/* 
+.alert-box.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* Show the alert (added via JavaScript) */
+.show {
+    opacity: 1;
+    transform: translateX(0); /* Slide in */
+}
+
+/* Close button inside the alert box */
+.alert-box button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.alert-box.success button {
+    color: #155724;
+}
+
+.shopping-cart-in-menu {
+    position: relative;
+}
+
+.shopping-cart-in-menu .nr-of-elements {
+    border: 2px solid #2a2a2a;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: absolute;
+    line-height: 28px;
+    text-align: center;
+    font-weight: bold;
+    top: -4px;
+    right: -22px;
+}
+
+@keyframes flicker {
+    0% {
+        transform: scale(1);
+        color: #2a2a2a;
+        background-color: #fff;
+    }
+    50% {
+        transform: scale(1.3);
+        color: #fff;
+        background-color: #008f20;
+    }
+    100% {
+        transform: scale(1);
+        color: #2a2a2a;
+        background-color: #fff;
+    }
+}
+
+.flicker-cart {
+    animation: flicker 1s ease-in-out;
+}
+
+/*
 ---------------------------------------------
 responsive
---------------------------------------------- 
+---------------------------------------------
 */
 
 @media (max-width: 1200px) {

@@ -1,3 +1,25 @@
+function triggerAlert(message, success = false) {
+    const alertBox = document.getElementById('alertBox');
+    const alertMessage = document.getElementById('alertMessage');
+    alertMessage.innerText = message;
+    if (success) {
+        alertBox.classList.add('success');
+    } else {
+        alertBox.classList.remove('success');
+    }
+    alertBox.classList.add('show');
+
+    setTimeout(() => {
+        closeAlert();
+    }, 3000);
+}
+
+function closeAlert() {
+    const alertBox = document.getElementById('alertBox');
+
+    alertBox.classList.remove('show');
+}
+
 (function ($) {
 
 	"use strict";
@@ -143,6 +165,8 @@
 		});
 	}
 
+
+
     $(document).ready(function(){
         $(document).on('click', '.add-to-cart' ,function (e) {
             e.preventDefault();
@@ -160,11 +184,28 @@
                     product_id: id,
                 }),
             })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Resource created:', data)
+                .then(response => {
+                    if (!response.ok) {
+                        // If response is not ok (status outside 200–299), throw an error
+                        return response.json().then(errorData => {
+                            throw new Error(errorData.message || 'Something went wrong');
+                        });
+                    }
+                    return response.json();
                 })
-                .catch(error => console.error('Error:', error));
+                .then(data => {
+                    const nrOfElements = document.getElementById('nr-of-elements-in-cart');
+                    nrOfElements.innerText = data.cartItems;
+
+                    nrOfElements.classList.add('flicker-cart');
+                    setTimeout(function() {
+                        nrOfElements.classList.remove('flicker-cart');
+                    }, 1000);
+                    triggerAlert(data.message, true);
+                })
+                .catch(error => {
+                    triggerAlert(error.message);
+                });
         });
     });
 

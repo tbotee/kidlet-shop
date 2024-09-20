@@ -43,7 +43,9 @@
         </li>
     @endif
     <li class="scroll-to-section">
-        <a href=""><i class="fa fa-shopping-cart fa-lg"></i></a>
+        <a href="" class="shopping-cart-in-menu"><i class="fa fa-shopping-cart fa-lg"></i>
+            <div id="nr-of-elements-in-cart" class="nr-of-elements">{{ $cartItemCount }}</div>
+        </a>
     </li>
 
 </ul>

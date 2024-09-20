@@ -52,6 +52,11 @@
 </header>
 <!-- ***** Header Area End ***** -->
 
+<div class="alert-box" id="alertBox">
+    <span id="alertMessage">Something went wrong!</span>
+    <button onclick="closeAlert()">&times;</button> <!-- Close button -->
+</div>
+
 @yield('banner')
 
 @yield('content')

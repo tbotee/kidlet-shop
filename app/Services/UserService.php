@@ -32,13 +32,3 @@ class UserService
         }
     }
 }
-/*
- * if (!Auth::check() && !$request->session()->has('guest_id')) {
-            // If the user is not authenticated and no guest_id in session, create a new Guest
-            $guest = Guest::create(['id' => (string) Str::uuid()]);
-
-            if ($guest) {
-                // Store the guest_id in session
-                $request->session()->put('guest_id', $guest->id);
-            }
-        }*/
