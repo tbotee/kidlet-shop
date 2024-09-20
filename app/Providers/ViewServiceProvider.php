@@ -27,7 +27,7 @@ class ViewServiceProvider extends ServiceProvider
             $userService = $this->app->make(UserService::class);
             $user = $userService->getAuthenticatedUser();
             $view->with('categories', $categories);
-            $view->with('cartItemCount', $user->shoppingCart->items->count());
+            $view->with('cartItemCount', $user->shoppingCart?->items?->count() ?? 0) ;
         });
     }
 }
