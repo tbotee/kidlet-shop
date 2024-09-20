@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // add user_id nullable, session_id, nullable
-        Schema::create('shopping_carts', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->uuid('session_id')->nullable();
+        Schema::create('guests', function (Blueprint $table) {
+            $table->uuid('id')->primary();
             $table->timestamps();
         });
     }
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('shopping_carts');
+        Schema::dropIfExists('guests');
     }
 };

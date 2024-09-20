@@ -147,7 +147,24 @@
         $(document).on('click', '.add-to-cart' ,function (e) {
             e.preventDefault();
             const id = $(this).data('id');
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                .getAttribute('content');
 
+            fetch('/cart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken, // Include CSRF token for security
+                },
+                body: JSON.stringify({
+                    product_id: id,
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Resource created:', data)
+                })
+                .catch(error => console.error('Error:', error));
         });
     });
 

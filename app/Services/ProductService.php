@@ -2,10 +2,13 @@
 
 namespace App\Services;
 
+use App\Models\Guest;
 use App\Models\Product;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Builder;
+use Exception;
 
 class ProductService
 {
@@ -31,9 +34,24 @@ class ProductService
         return Product::when($categoryId, function($query) use ($categoryId) {
             $query->where('category_id', $categoryId);
         })
+            ->whereIn('stock', [
+                config('constants.product_status.in_stock'),
+                config('constants.product_status.reserved'),
+            ])
             ->orderBy('created_at', 'desc')
             ->with('category');
     }
 
-
+    public function addProductToCart(Guest|Authenticatable $user, Product $product)
+    {
+        $cart = $user->shoppingCart()->firstOrCreate([]);
+        $cartItem = $cart->items()->where('product_id', $product->id)->first();
+        if (!$cartItem) {
+            return $cart->items()->create([
+                'product_id' => $product->id
+            ]);
+        } else {
+            throw new Exception('product-reserved-by-current-user');
+        }
+    }
 }
