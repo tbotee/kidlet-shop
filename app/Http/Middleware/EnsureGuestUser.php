@@ -17,7 +17,7 @@ class EnsureGuestUser
 
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check()) {
+        if (!Auth::check() && !session('guest_id')) {
             $this->userService->createGuestUser();
         }
         return $next($request);

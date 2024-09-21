@@ -66,7 +66,7 @@
 
     </div>
     <div class="cart-footer main-border-button">
-        <a href="#" class="checkout-btn">Go to Checkout</a>
+        <a href="{{ route('checkout') }}" class="checkout-btn">Go to Checkout</a>
     </div>
 </div>
 
@@ -152,7 +152,6 @@
                 $("." + selectedClass).fadeIn();
                 $("#portfolio").fadeTo(50, 1);
             }, 500);
-
         });
     });
 

@@ -23,12 +23,18 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/cart', [ShoppingCartController::class, 'cart'])->name('getCart');
 
+Route::get('/checkout', [ShoppingCartController::class, 'checkout'])->name('checkout');
+
 Route::post('/cart', [ShoppingCartController::class, 'store'])->name('setCart');
+
+Route::delete('/cart/{productId}', [ShoppingCartController::class, 'remove'])->name('deleteCartItem');
 
 Route::get('/all-products', [ProductsController::class, 'allProducts'])->name('allProducts');
 
 Route::get('/{categorySlug}', [ProductsController::class, 'category'])->name('category');
 
 Route::get('/{categorySlug}/{productSlug}', [ProductController::class, 'index'])->name('product');
+
+
 
 

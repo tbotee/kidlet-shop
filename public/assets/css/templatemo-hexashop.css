@@ -2320,6 +2320,19 @@ contact Us Page
     border-bottom: 1px solid #ddd;
 }
 
+.cart-item img {
+    max-width: 50px;
+}
+
+.cart-item .fa {
+    font-size: 2rem;
+}
+
+.cart-item .fa:hover {
+    color: red;
+    cursor: pointer;
+}
+
 .remove-item {
     background: none;
     border: none;
@@ -2355,11 +2368,6 @@ contact Us Page
         background-color: #fff;
     }
 }
-
-.flicker-cart {
-    animation: flicker 1s ease-in-out;
-}
-
 /*
 ---------------------------------------------
 responsive

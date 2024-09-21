@@ -43,7 +43,7 @@ class ProductService
             ->with('category');
     }
 
-    public function addProductToCart(Product $product, ShoppingCart $cart)
+    public function addProductToCart(Product $product, ShoppingCart $cart): ShoppingCart
     {
         $cart->items()->create([
             'product_id' => $product->id
@@ -52,10 +52,34 @@ class ProductService
         return $cart;
     }
 
+    public function removeProductToCart(Product $product, ShoppingCart $cart): ShoppingCart
+    {
+        $cart->items()->where('product_id', $product->id)->delete();
+        $this->updateProductsStockToInStock($product, $cart);
+        return $cart;
+    }
+
     private function updateProductsStockToReserved(Product $product, ShoppingCart $cart): void
     {
         $product->stock = config('constants.product_status.reserved');
         $product->save();
         $cart->touch();
+    }
+
+    private function updateProductsStockToInStock(Product $product, ShoppingCart $cart): void
+    {
+        $product->stock = config('constants.product_status.in_stock');
+        $product->save();
+        $cart->touch();
+    }
+
+    public function checkout(ShoppingCart $shoppingCart)
+    {
+        $shoppingCart->items()->each(function($item) {
+            $product = $item->product;
+            $product->stock = config('constants.product_status.not_available');
+            $product->save();
+            $item->delete();
+        });
     }
 }

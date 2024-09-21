@@ -2,27 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guest;
+use App\Models\Product;
 use App\Models\ShoppingCart;
 use App\Services\ProductService;
 use App\Services\UserService;
 use Exception;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ShoppingCartController extends Controller
 {
-    private UserService $userService;
-    private ProductService $productService;
-
     public function __construct(
-        UserService $userService,
-        ProductService $productService
+        public UserService $userService,
+        public ProductService $productService
     ) {
-        $this->userService = $userService;
-        $this->productService = $productService;
     }
 
-    public function store(Request $request): \Illuminate\Http\JsonResponse
+    public function store(Request $request): JsonResponse
     {
         try {
             $user = $this->userService->getAuthenticatedUser();
@@ -51,10 +50,40 @@ class ShoppingCartController extends Controller
         ]);
     }
 
+    public function remove(int $productId): JsonResponse
+    {
+        try {
+            $user = $this->userService->getAuthenticatedUser();
+            $this->removeProductFromCart($user, $productId);
+
+            return response()->json([
+                'message' => 'Product successfully removed from the cart',
+                'cartItems' => $user->shoppingCart->items->count()
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 400);
+        }
+    }
+
     private function getId(Request $request): mixed
     {
         $data = $request->all();
         return (int) $data['product_id'];
+    }
+
+    public function checkout(): View
+    {
+        try {
+            $user = $this->userService->getAuthenticatedUser();
+            $this->productService->checkout($user->shoppingCart);
+            return view('pages.checkout', [
+                'categoryName' => 'Checkout'
+            ]);
+        } catch (Exception $e) {
+            abort(404);
+        }
     }
 
     /**
@@ -72,20 +101,27 @@ class ShoppingCartController extends Controller
         return $product;
     }
 
-    public function addProductToCart(\App\Models\Guest|\Illuminate\Contracts\Auth\Authenticatable $user, Request $request): void
+    /**
+     * @throws Exception
+     */
+    public function addProductToCart(Guest|Authenticatable $user, Request $request): void
     {
         $cart = $user->shoppingCart()->firstOrCreate([]);
         $product = $this->getProduct($request, $cart);
         $this->productService->addProductToCart($product, $cart);
     }
 
+    public function removeProductFromCart(Guest|Authenticatable $user, int $productId): void
+    {
+        $cart = $user->shoppingCart;
+        $product = $this->productService->getProductById($productId);
+        $this->productService->removeProductToCart($product, $cart);
+    }
+
     /**
-     * @param ShoppingCart $shoppingCart
-     * @param \App\Models\Product $product
-     * @return void
      * @throws Exception
      */
-    public function validateProductStock(ShoppingCart $shoppingCart, \App\Models\Product $product): void
+    public function validateProductStock(ShoppingCart $shoppingCart, Product $product): void
     {
         $ownProduct = $shoppingCart->items()->where('product_id', $product->id)->first();
         if ($ownProduct) {

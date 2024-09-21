@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class ShoppingCartItem extends Model
 {
@@ -19,7 +20,7 @@ class ShoppingCartItem extends Model
         return $this->belongsTo(ShoppingCart::class);
     }
 
-    public function product(): BelongsTo
+    public function product(): belongsTo
     {
         return $this->belongsTo(Product::class);
     }
