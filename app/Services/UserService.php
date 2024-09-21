@@ -20,15 +20,13 @@ class UserService
 
     private function getGuestUser(): Guest
     {
-        if (session('guest_id')) {
-            return Guest::find(session('guest_id'));
-        } else {
-            $guest = Guest::create(['id' => (string) Str::uuid()]);
+       return Guest::find(session('guest_id'));
+    }
 
-            if ($guest) {
-                session(['guest_id' => $guest->id]);
-            }
-            return $guest;
-        }
+    public function createGuestUser(): Guest
+    {
+        $guest = Guest::create(['id' => (string) Str::uuid()]);
+        session(['guest_id' => $guest->id]);
+        return $guest;
     }
 }

@@ -45,8 +45,17 @@ class ProductService
 
     public function addProductToCart(Product $product, ShoppingCart $cart)
     {
-        return $cart->items()->create([
+        $cart->items()->create([
             'product_id' => $product->id
         ]);
+        $this->updateProductsStockToReserved($product, $cart);
+        return $cart;
+    }
+
+    private function updateProductsStockToReserved(Product $product, ShoppingCart $cart): void
+    {
+        $product->stock = config('constants.product_status.reserved');
+        $product->save();
+        $cart->touch();
     }
 }
