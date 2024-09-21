@@ -178,10 +178,14 @@ function closeAlert() {
     function updateCartNumber(data) {
         const nrOfElements = document.getElementById('nr-of-elements-in-cart');
         nrOfElements.innerText = data.cartItems;
+        const $mobileCart = $('.mobile-cart-number');
+        $mobileCart.text(data.cartItems);
 
         nrOfElements.classList.add('flicker-cart');
+        $mobileCart.addClass('flicker-cart');
         setTimeout(function() {
             nrOfElements.classList.remove('flicker-cart');
+            $mobileCart.removeClass('flicker-cart');
         }, 1000);
     }
 
@@ -223,12 +227,9 @@ function closeAlert() {
                 });
         });
 
-
-        const cartLink = document.querySelector('.shopping-cart-in-menu');
-
         const closeCartBtn = document.querySelector('.close-cart');
 
-        cartLink.addEventListener('click', function(event) {
+        $(document).on('click', '.shopping-cart-in-menu, .mobile-cart', function(event) {
             fetchCartData()
                 .then(html => {
                     document.querySelector('#cart-items').innerHTML = html;

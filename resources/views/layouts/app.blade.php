@@ -74,6 +74,11 @@
 
 @yield('content')
 
+<div class="mobile-cart">
+    <i class="fa fa-shopping-cart fa-lg"></i>
+    <div class="mobile-cart-number" class="">{{ $cartItemCount }}</div>
+</div>
+
 <!-- ***** Footer Start ***** -->
 <footer>
     <div class="container">
