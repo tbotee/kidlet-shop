@@ -14,8 +14,8 @@ return new class extends Migration
         // add user_id nullable, session_id, nullable
         Schema::create('shopping_carts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->uuid('session_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable()->index();
+            $table->uuid('session_id')->nullable()->index();
             $table->timestamps();
         });
     }

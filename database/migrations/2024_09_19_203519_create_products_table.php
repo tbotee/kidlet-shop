@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->index();
             $table->string('image_path');
-            $table->foreignId('category_id')->constrained()->onDelete('restrict');
+            $table->foreignId('category_id')->constrained()->onDelete('restrict')->index();
             $table->decimal('price', 8, 2);
             $table->integer('stock');
             $table->timestamps();
