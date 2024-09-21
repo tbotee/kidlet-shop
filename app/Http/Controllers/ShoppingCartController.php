@@ -79,7 +79,7 @@ class ShoppingCartController extends Controller
             $user = $this->userService->getAuthenticatedUser();
             $this->productService->checkout($user->shoppingCart);
             return view('pages.checkout', [
-                'categoryName' => 'Checkout'
+                'categoryName' => 'You checked out successfully!'
             ]);
         } catch (Exception $e) {
             abort(404);
