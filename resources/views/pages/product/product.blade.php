@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="left-images">
-                        <img src="{{ asset('assets/images/single-product-01.jpg') }}" alt="">
+                        <img src="{{ asset('assets/images/' . $product->image_path) }}" alt="">
                         <img src="{{ asset('assets/images/single-product-02.jpg') }}" alt="">
                     </div>
                 </div>
