@@ -67,23 +67,27 @@ class ShoppingCartController extends Controller
         }
     }
 
-    private function getId(Request $request): mixed
-    {
-        $data = $request->all();
-        return (int) $data['product_id'];
-    }
-
     public function checkout(): View
     {
         try {
             $user = $this->userService->getAuthenticatedUser();
-            $this->productService->checkout($user->shoppingCart);
+            $message = 'You have no items in your cart.';
+            if ($user->shoppingCart->items->count() > 0) {
+                $this->productService->checkout($user->shoppingCart);
+                $message =  'You checked out successfully!';
+            }
             return view('pages.checkout', [
-                'categoryName' => 'You checked out successfully!'
+                'categoryName' => $message
             ]);
         } catch (Exception $e) {
             abort(404);
         }
+    }
+
+    private function getId(Request $request): mixed
+    {
+        $data = $request->all();
+        return (int) $data['product_id'];
     }
 
     /**

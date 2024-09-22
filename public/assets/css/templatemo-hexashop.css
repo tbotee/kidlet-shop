@@ -150,9 +150,10 @@ body {
   color: #fff;
   border: 1px solid #fff;
   padding: 12px 25px;
-  display: inline-block;
+  display: block;
   font-weight: 500;
   transition: all .3s;
+
 }
 
 .main-border-button a:hover {
