@@ -3,6 +3,9 @@
 
 ## Installation
 
+### Clone repository
+```https://github.com/tbotee/kidlet-shop.git```
+
 ### Install dependencies
 - php dependencies: ```composer install```
 - js dependencies: ```npm install```

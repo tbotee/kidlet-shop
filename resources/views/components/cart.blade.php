@@ -17,5 +17,4 @@
         <span>Total: </span>
         <span>${{ $total }}</span>
     </h4>
-    <div id="loading-spinner" style="display: none;">Loading...</div>
 @endif

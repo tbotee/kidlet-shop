@@ -150,7 +150,7 @@ body {
   color: #fff;
   border: 1px solid #fff;
   padding: 12px 25px;
-  display: block;
+  display: inline-block;
   font-weight: 500;
   transition: all .3s;
 

@@ -66,7 +66,7 @@
 
     </div>
     <div class="cart-footer main-border-button">
-        <a href="{{ route('checkout') }}" class="checkout-btn">Go to Checkout</a>
+        <a href="{{ route('checkout') }}" class="checkout-btn d-block">Go to Checkout</a>
     </div>
 </div>
 
