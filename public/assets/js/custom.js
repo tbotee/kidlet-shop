@@ -236,14 +236,19 @@ function closeAlert() {
         const closeCartBtn = document.querySelector('.close-cart');
 
         $(document).on('click', '.shopping-cart-in-menu, .mobile-cart', function(event) {
-            fetchCartData()
-                .then(html => {
-                    document.querySelector('#cart-items').innerHTML = html;
-                    cartPanel.classList.add('open');
-                })
-                .catch(error => {
-                    console.error('There was a problem with the fetch operation:', error);
-                });
+            if (!cartPanel.classList.contains('open')) {
+                fetchCartData()
+                    .then(html => {
+                        document.querySelector('#cart-items').innerHTML = html;
+                        cartPanel.classList.add('open');
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error);
+                    });
+            } else {
+                cartPanel.classList.remove('open');
+            }
+
             event.preventDefault();
         });
 
